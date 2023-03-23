@@ -16,3 +16,33 @@ data "azurerm_key_vault_secret" "pg-password"{
   name = "pg-password"
   key_vault_id = data.azurerm_key_vault.kv.id
 }
+
+data "azurerm_key_vault_secret" "db-host"{
+  name = "db-host"
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
+
+data "azurerm_key_vault_secret" "db-username"{
+  name = "db-username"
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
+
+data "azurerm_key_vault_secret" "db-password"{
+  name = "db-password"
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
+
+data "azurerm_key_vault_secret" "access-token-secret"{
+  name = "access-token-secret"
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
+
+data "azurerm_key_vault_secret" "pgadmin-mail"{
+  name = "pgadmin-mail"
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
+
+data "azurerm_key_vault_secret" "pgadmin-password"{
+  name = "pgadmin-password"
+  key_vault_id = data.azurerm_key_vault.kv.id
+}
