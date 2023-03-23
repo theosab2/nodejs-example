@@ -67,8 +67,8 @@ resource "azurerm_linux_web_app" "webapp" {
   app_settings = {
     PORT= var.PORT
     DB_HOST= data.azurerm_key_vault_secret.db-host.value
-    DB_USERNAME= "${data.azurerm_key_vault_secret.db-username.value}@${azurerm_postgresql_server.pg-srv.name}"
-    DB_PASSWORD= data.azurerm_key_vault_secret.db-password.value
+    DB_USERNAME= "${data.azurerm_key_vault_secret.pg-login.value}@${azurerm_postgresql_server.pg-srv.name}"
+    DB_PASSWORD= data.azurerm_key_vault_secret.pg-password.value
     DB_DATABASE= "postgres"
     DB_DAILECT= var.DB_DAILECT
     DB_PORT= var.DB_PORT
@@ -80,7 +80,7 @@ resource "azurerm_linux_web_app" "webapp" {
   }
 }
 
-resource "azurerm_container_group" "rabbitmq" {
+resource "azurerm_container_group" "pgadmin" {
   name                = "aci-pgadmin-${var.project_name}${var.environment_suffix}"
   location            = data.azurerm_resource_group.rg-maalsi.location
   resource_group_name = data.azurerm_resource_group.rg-maalsi.name
